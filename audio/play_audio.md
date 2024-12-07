@@ -8,4 +8,10 @@ Attach the component to any GameObject with a Graphic component such as Image, T
 
 Assign your AudioClip, adjust the volume and select an input event on which the clip should play.
 
-The available events are PointerEnter, PointerExit, PointerDown, PointerUp, Click and DoubleClick.
+The available events are :
+* PointerEnter
+* PointerExit
+* PointerDown
+* PointerUp
+* Click
+* DoubleClick.
