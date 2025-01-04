@@ -6,7 +6,7 @@ Attach the component to any GameObject and assign the required fields.
 
 After configuring your modal box create a prefab of it and assign it to the [Modal Box Manager](modal_box_manager.md).
 
-The visibility of the modal box is controlled by a [Window](windows/window.md).
+The visibility of the modal box is controlled by a [Window](../windows/window.md).
 
 To instantiate a modal box use the [Modal Box Create](modal_box_create.md) component or via code.
 
