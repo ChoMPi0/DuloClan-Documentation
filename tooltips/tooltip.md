@@ -76,3 +76,28 @@ public void OnTooltip(bool show)
 ```
 
 ## Static Methods
+
+
+| Name  | Returns | Summary |
+| ------------- | ------------- | ------------- |
+| AddTitle(string) | void | Adds title line. |
+| AddDescription(string) | void | Adds description line. |
+| AddLine(string) | void | Adds a new single column line. |
+| AddLine(string, RectOffset) | void | Adds a new single column line. |
+| AddLine(string, RectOffset, string) | void | Adds a new single column line. |
+| AddLine(string, RectOffset, UITooltipLines.LineStyle) | void | Adds a new single column line. |
+| AddLine(string, string) | void | Adds a new single column line. |
+| AddLine(string, UITooltipLines.LineStyle) | void | Adds a new single column line. |
+| AddLineColumn(string) | void | Adds a column (Either to the last line if it's not complete or to a new one). |
+| AddLineColumn(string, string) | void | Adds a column (Either to the last line if it's not complete or to a new one). |
+| AddLineColumn(string, UITooltipLines.LineStyle) | void | Adds a column (Either to the last line if it's not complete or to a new one). |
+| AddSpacer() | void | Adds a spacer line. |
+| AnchorToRect(RectTransform) | void | Anchors the tooltip to a rect. |
+| Show() | void | Show the tooltip. |
+| Hide() | void | Hide the tooltip. |
+| InstantiateIfNecessary(GameObject) | void | Instantiate the tooltip game object if necessary. |
+| OverrideAnchoredOffset(Vector2) | void | Overrides the anchored offset for single display of the tooltip. |
+| OverrideOffset(Vector2) | void | Overrides the offset for single display of the tooltip. |
+| SetHorizontalFitMode(ContentSizeFitter.FitMode) | void | Sets the horizontal fit mode of the tooltip. |
+| SetLines(UITooltipLines) | void | Sets the lines template. |
+| SetWidth(float) | void | Sets the width of the toolip. |
