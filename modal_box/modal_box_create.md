@@ -1,5 +1,5 @@
 # Modal Box Create
-This component is used to simplify instantiation of Modal Box, it uses the Modal Box Manager to create the box.
+This component is used to simplify instantiation of [Modal Box](modal_box.md), it uses the [Modal Box Manager](modal_box_manager.md) to create the box.
 
 ## Simple Usage
 Attach the component to any GameObject and assign the required fields.
