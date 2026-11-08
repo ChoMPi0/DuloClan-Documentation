@@ -13,6 +13,8 @@ Not every asset ships every system. If a page describes a component you can't fi
 ## Documentation Content
 * Getting Started
   - [Getting Started](getting_started/getting_started.md)
+  - [Troubleshooting](getting_started/troubleshooting.md)
+  - [Script Changelog](changelog.md)
 * Audio
   - [Audio Source](audio/audio_source.md)
   - [Play Audio](audio/play_audio.md)
@@ -43,6 +45,8 @@ Not every asset ships every system. If a page describes a component you can't fi
   - [Equip Receiver](icon_slots/equip_receiver.md)
   - [Talent Slot](icon_slots/talent_slot.md)
   - [Slot Cooldown](icon_slots/slot_cooldown.md)
+  - [Slot Groups](icon_slots/slot_groups.md)
+  - [Item Quality](icon_slots/item_quality.md)
   - [Databases](icon_slots/databases.md)
 * Loading Overlay
   - [Loading Overlay](loading_overlay/loading_overlay.md)
@@ -65,6 +69,7 @@ Not every asset ships every system. If a page describes a component you can't fi
   - [Tooltip](tooltips/tooltip.md)
   - [Tooltip Manager](tooltips/tooltip_manager.md)
   - [Tooltip Show](tooltips/tooltip_show.md)
+  - [Tooltip Flip Helpers](tooltips/tooltip_flip_helpers.md)
 * Transitions
   - [Highlight Transition](transitions/highlight_transition.md)
   - [Press Transition](transitions/press_transition.md)
@@ -74,6 +79,7 @@ Not every asset ships every system. If a page describes a component you can't fi
   - [Tweening](tweening/tweening.md)
 * Windows
   - [Window](windows/window.md)
+  - [Window ID](windows/window_id.md)
   - [Window Manager](windows/window_manager.md)
   - [Close and Show Window](windows/close_and_show_window.md)
   - [Black Overlay](windows/black_overlay.md)
@@ -84,4 +90,8 @@ Not every asset ships every system. If a page describes a component you can't fi
   - [Drag Object](miscellaneous/drag_object.md)
   - [Input Event](miscellaneous/input_event.md)
   - [Pagination](miscellaneous/pagination.md)
+  - [Display Value](miscellaneous/display_value.md)
+  - [Flexible Width Grid Layout](miscellaneous/flexible_width_grid_layout.md)
+  - [Canvas Helpers](miscellaneous/canvas_helpers.md)
+  - [Small Helpers](miscellaneous/small_helpers.md)
   - [Utility](miscellaneous/utility.md)

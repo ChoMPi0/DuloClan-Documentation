@@ -1,39 +1,68 @@
 # Slot Cooldown
-This component is used to start and keep track of slot cooldowns.
+Shows a cooldown on a [Spell Slot](spell_slot.md): a filled image, a countdown text and an optional moving edge graphic. Cooldowns are stored per spell ID, so moving a spell to another slot keeps its remaining time.
 
-## Usage
-Attach the component to any GameObject and assign the required fields.
+## Setup
+1. Add **Slot Cooldown** (Add Component -> UI -> Icon Slots -> Slot Cooldown) to the slot or a child.
+2. Assign the slot to **Target Slot**. It must implement `IUISlotHasCooldown` ([Spell Slot](spell_slot.md) does). Otherwise a warning is logged and the component disables itself.
+3. Assign **Target Graphic**, an **Image** with **Image Type** set to **Filled**. Its fill amount runs from 1 to 0.
+4. Optionally assign **Target Text** for the remaining seconds.
+5. Optionally assign **Finish Graphic**, an edge that moves down with the fill.
+6. Start cooldowns from code with `StartCooldown`.
 
-Note that the **Target Slot** must implement the **IUISlotHasCooldown** interface.
+The graphics and text are hidden when no cooldown is running.
 
-The cooldown must be started manually from code, it's preferable to have a dedicated cooldown manager for that.
+## Properties
 
-You can access the cooldown component from the slot's **cooldownComponent** property.
+| Property | Summary |
+| --- | --- |
+| Target Slot | The slot this cooldown belongs to. |
+| Target Graphic | Filled image that shows the remaining time. |
+| Target Text | Text with the remaining seconds. |
+| Finish Graphic | Optional edge graphic that follows the fill. |
+| Finish Offset Y | Vertical offset of the finish graphic. |
+| Finish Fading Pct | Percent of the duration at the start and end where the finish graphic fades. |
+
+## Behavior
+- `StartCooldown(spellId, duration)` starts the display on this slot and records the end time for that spell ID. The record is shared by all slots.
+- A slot resumes the remaining time when a spell with a running cooldown is assigned to it, or when the cooldown object is enabled again.
+- Other slots that already show the same spell are not updated automatically. Call `StartCooldown` on each of them (see the demo below).
+- Unassigning the spell or disabling the object stops the display. The shared record is kept until it expires.
+
+## Methods
+
+| Name | Returns | Summary |
+| --- | --- | --- |
+| StartCooldown(int, float) | void | Starts a cooldown for the spell ID with a duration in seconds. Needs a **Target Graphic**. |
+| ResumeCooldown(int) | void | Resumes the display of a running cooldown for the spell ID. |
+| CheckForActiveCooldown() | void | Resumes the cooldown of the assigned spell, if one is running. |
+| InterruptCooldown() | void | Stops the display on this slot. |
+| OnAssignSpell() | void | Called by the slot when a spell is assigned. |
+| OnUnassignSpell() | void | Called by the slot when the spell is unassigned. |
+
+## Properties
+
+| Name | Type | Summary |
+| --- | --- | --- |
+| IsOnCooldown | bool | Is a cooldown displayed on this slot (read only). |
+
+## Code Usage
+The slot exposes its cooldown through `cooldownComponent`.
 
 ```
 public void StartSlotCooldown(UISpellSlot slot)
 {
-    // Make sure we have the cooldown component
-    if (slot.cooldownComponent == null)
+    // Make sure we have the cooldown component and a spell
+    if (slot.cooldownComponent == null || !slot.IsAssigned())
         return;
 
-    // Make sure the slot is assigned
-    if (!slot.IsAssigned())
-        return;
-
-    // Get the spell info from the slot
     UISpellInfo spellInfo = slot.GetSpellInfo();
 
-    // Handle cooldown just for the demonstration
     if (spellInfo.Cooldown > 0f)
-    {
-        // Start the cooldown
         slot.cooldownComponent.StartCooldown(spellInfo.ID, spellInfo.Cooldown);
-    }
 }
 ```
 
-Here is an example of the demo cast manager we have in our assets.
+The demo cast manager included with the asset. It starts the cooldown on every slot that holds the clicked spell.
 
 ```
 using UnityEngine;
@@ -42,16 +71,18 @@ namespace DuloGames.UI
 {
     public class Demo_CastManager : MonoBehaviour
     {
+        #pragma warning disable 0649
         [SerializeField] private UICastBar m_CastBar;
         [SerializeField] private Transform[] m_SlotContainers;
+        #pragma warning restore 0649
 
         protected void Start()
         {
-            if (this.m_SlotContainers.Length > 0)
+            if (this.m_SlotContainers != null && this.m_SlotContainers.Length > 0)
             {
                 foreach (Transform t in this.m_SlotContainers)
                 {
-                    UISpellSlot[] slots = t.GetComponentsInChildren();
+                    UISpellSlot[] slots = t.GetComponentsInChildren<UISpellSlot>();
 
                     foreach (UISpellSlot slot in slots)
                     {
@@ -97,7 +128,7 @@ namespace DuloGames.UI
                 {
                     if (s.IsAssigned() && s.GetSpellInfo() != null && s.cooldownComponent != null)
                     {
-                        // If the slot IDs match
+                        // If the spell IDs match
                         if (s.GetSpellInfo().ID == spellInfo.ID)
                         {
                             // Start the cooldown
@@ -110,3 +141,5 @@ namespace DuloGames.UI
     }
 }
 ```
+
+See also [Cast Bar](../bars/cast_bar.md).

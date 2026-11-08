@@ -1,15 +1,38 @@
 # Loading Overlay Manager
-This is a scriptable object which handles the instantiation of [Loading Overlay](loading_overlay.md).
+A ScriptableObject that holds the [Loading Overlay](loading_overlay.md) prefab and creates overlays for scene loading.
 
-## Simple Usage
-The manager must be placed in a Resources directory in your project.
+## Setup
+1. Right click in the Project view and select Create -> UI Managers -> Loading Overlay Manager.
+2. Save the asset in a **Resources** folder and keep the default name **LoadingOverlayManager**. It is loaded with `Resources.Load("LoadingOverlayManager")`, so a renamed asset or one outside a Resources folder is not found.
+3. Assign the [Loading Overlay](loading_overlay.md) prefab to **Loading Overlay Prefab**.
 
-To create the manager right click in your Project view then select Create -> UI Managers -> Loading Overlay Manager.
+## Inspector Settings
 
-Assign the [Loading Overlay](loading_overlay.md) prefab.
+| Property | Summary |
+| --- | --- |
+| Loading Overlay Prefab | The prefab instantiated by `Create`. It must have a UILoadingOverlay component. |
+
+## Methods
+
+| Name | Returns | Summary |
+| --- | --- | --- |
+| Create() | UILoadingOverlay | Instantiates the prefab at the scene root (the overlay has its own canvas). Returns null when no prefab is assigned. |
+
+## Properties
+
+| Name | Type | Summary |
+| --- | --- | --- |
+| prefab | GameObject | The loading overlay prefab. |
+
+## Static Properties
+
+| Name | Type | Summary |
+| --- | --- | --- |
+| Instance | UILoadingOverlayManager | The manager asset loaded from Resources, or null. |
 
 ## Code Usage
-You can access the loading overlay manager at any time by the Instance static property.
+To load a scene from a button without code, use [Load Scene](load_scene.md).
+
 ```
 public void LoadScene(string sceneName)
 {
@@ -26,5 +49,16 @@ public void LoadScene(string sceneName)
             Debug.LogWarning("Failed to instantiate the loading overlay prefab, make sure it's assigned on the manager.");
         }
     }
+}
+
+public void LoadSceneByIndex(int buildIndex)
+{
+    if (UILoadingOverlayManager.Instance == null)
+        return;
+
+    UILoadingOverlay loadingOverlay = UILoadingOverlayManager.Instance.Create();
+
+    if (loadingOverlay != null)
+        loadingOverlay.LoadScene(buildIndex);
 }
 ```

@@ -1,31 +1,82 @@
 # Tooltip Manager
-This is a scriptable object which handles the instantiation of [Tooltip](tooltip.md). The manager also contains the line styles and few other settings.
+A ScriptableObject that holds the [Tooltip](tooltip.md) prefab, the line styles and a few size settings. Every tooltip feature reads from it.
 
-## Simple Usage
-The manager must be placed in a Resources directory in your project.
+## Setup
+1. Right click in the Project view and select **Create -> UI Managers -> Tooltip Manager**.
+2. Save it as **TooltipManager** inside a **Resources** folder. It is loaded from **Resources/TooltipManager**; other names or folders are not found.
+3. Assign your [Tooltip](tooltip.md) prefab to **Tooltip Prefab**.
+4. Configure the **Default**, **Title** and **Description** line styles.
+5. Add any **Custom Styles** you need and give each a unique **Name**.
 
-To create the manager right click in your Project view then select Create -> UI Managers -> Tooltip Manager.
+Without this asset, `UITooltip.InstantiateIfNecessary` does nothing and no tooltip is shown.
 
-Configure the text line styles that are going to be used by the tooltip.
+## Properties
 
-Assign the [Tooltip](tooltip.md) prefab.
+| Property | Summary |
+| --- | --- |
+| Tooltip Prefab | The [Tooltip](tooltip.md) prefab created in each canvas. |
+| Spacer Height | Height of a spacer line, in pixels. |
+| Item Tooltip Width | Width used by the [Item Slot](../icon_slots/item_slot.md) and [Equip Slot](../icon_slots/equip_slot.md) tooltips. |
+| Spell Tooltip Width | Width used by the [Spell Slot](../icon_slots/spell_slot.md) tooltip. |
+| Default Line Style | Used for lines without a style, and when a custom style name is not found. |
+| Title Line Style | Used by `UITooltip.AddTitle`. |
+| Description Line Style | Used by `UITooltip.AddDescription`. |
+| Custom Styles | Named styles used by the `string customStyle` overloads. |
+
+## Line Style
+
+| Property | Summary |
+| --- | --- |
+| Name | Style name (custom styles only). |
+| Font / Font Style / Font Size / Line Spacing | Text settings. |
+| Override Text Alignment | **No** aligns the left column left and the right column right. **Left**, **Center** or **Right** forces an alignment. |
+| Font Color | Text color. |
+| Text Effects | Shadow or Outline effects with color, distance and **Use Graphic Alpha**. |
+
+The built-in slot tooltips use these custom style names: **ItemAttribute**, **ItemStat**, **ItemDescription**, **SpellTitle**, **SpellAttribute** and **SpellDescription**. Keep them if you use the slots.
+
+Use **Sort Custom Styles** from the component context menu to sort the custom styles by name.
+
+## Methods
+
+| Name | Returns | Summary |
+| --- | --- | --- |
+| GetCustomStyle(string) | UITooltipLineStyle | The custom style with the name, or the default style. |
+| SortCustomStyles() | void | Sorts the custom styles by name. |
+
+## Properties
+
+| Name | Type | Summary |
+| --- | --- | --- |
+| Instance (static) | UITooltipManager | The manager loaded from Resources/TooltipManager, or null. |
+| prefab | GameObject | The tooltip prefab. |
+| spacerHeight | int | The spacer height. |
+| itemTooltipWidth | int | The item tooltip width. |
+| spellTooltipWidth | int | The spell tooltip width. |
+| defaultLineStyle | UITooltipLineStyle | The default style. |
+| titleLineStyle | UITooltipLineStyle | The title style. |
+| descriptionLineStyle | UITooltipLineStyle | The description style. |
+| customStyles | UITooltipLineStyle[] | The custom styles. |
 
 ## Code Usage
-You can access the tooltip manager at any time by the Instance static property.
-
 ```
-public void InstantiateIfNecessary(GameObject rel)
+using UnityEngine;
+using DuloGames.UI;
+
+public class TooltipCheck : MonoBehaviour
 {
-    if (UITooltipManager.Instance == null || UITooltipManager.Instance.prefab == null)
-        return;
+    void Start()
+    {
+        UITooltipManager manager = UITooltipManager.Instance;
 
-    // Get the canvas
-    Canvas canvas = UIUtility.FindInParents(rel);
+        if (manager == null || manager.prefab == null)
+        {
+            Debug.LogWarning("Missing Resources/TooltipManager or its prefab.");
+            return;
+        }
 
-    if (canvas == null)
-        return;
-
-    // Instantiate a tooltip
-    Instantiate(UITooltipManager.Instance.prefab, canvas.transform, false);
+        UITooltipLineStyle style = manager.GetCustomStyle("ItemStat");
+        Debug.Log("ItemStat font size: " + style.TextFontSize);
+    }
 }
 ```

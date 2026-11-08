@@ -1,62 +1,84 @@
 # Switch Select
-This component is a select field with previous and next buttons.
+A select field with previous and next buttons instead of a dropdown list. Use it where a dropdown would not fit, or for short lists such as difficulty or language.
 
-## Options
-You can add new options to the switch select via the editor text area separated by new line.
+## Setup
+1. Add **Switch Select Field** (UI/Switch Select Field) to a GameObject.
+2. Assign the **Label Text**, **Prev Button** and **Next Button**.
+3. Enter the options in the **Options** text area, one per line.
+4. Pick the **Selected option**.
+5. Hook a method to **On Change**.
 
-Adding options via code is done with the **AddOption(string optionValue)** and **AddOptionAtIndex(string optionValue, int index)** methods.
+The buttons wrap around: next on the last option selects the first, previous on the first selects the last.
 
-```
-[SerializeField] private UISwitchSelect m_SelectField;
+## Inspector Settings
 
-protected void Start()
-{
-    if (this.m_SelectField == null)
-        return;
-
-    // Add new option
-    this.m_SelectField.AddOption("My new option");
-}
-```
-
-Removing options via code is done with the **RemoveOption(string optionValue)** and **RemoveOptionAtIndex(int index)** methods.
-
-```
-[SerializeField] private UISwitchSelect m_SelectField;
-
-protected void Start()
-{
-    if (this.m_SelectField == null)
-        return;
-
-    // Remove the first option
-    this.m_SelectField.RemoveOptionAtIndex(0);
-}
-```
-
-Selecting options via code is done with the **SelectOption(string optionValue)** and **SelectOptionByIndex(int index)** methods.
-
-```
-[SerializeField] private UISwitchSelect m_SelectField;
-
-protected void Start()
-{
-    if (this.m_SelectField == null)
-        return;
-
-    // Set the selected option
-    this.m_SelectField.SelectOption("My new option");
-}
-```
+| Property | Summary |
+| --- | --- |
+| **Label Text** | Text that shows the selected option. |
+| **Prev Button** | Selects the previous option. |
+| **Next Button** | Selects the next option. |
+| **Options** | One option per line. |
+| **Selected option** | The selected option. |
 
 ## Events
-The select field has an **onChange** event which will be invoked whenever the selected option is changed.
-
-Here is an example of an eligible method for the change event.
+`onChange` is a `UnityEvent<int, string>`. It passes the option index and the option value. It fires only when the selection changes.
 
 ```
 public void OnSelectedOption(int index, string option)
 {
     Debug.Log("Selected option: " + option);
+}
+```
+
+## Methods
+
+| Name | Returns | Summary |
+| --- | --- | --- |
+| AddOption(string) | void | Adds an option at the end. |
+| AddOptionAtIndex(string, int) | void | Inserts an option. An index past the end adds it at the end. |
+| RemoveOption(string) | void | Removes an option and re-validates the selection. |
+| RemoveOptionAtIndex(int) | void | Removes the option at the index and re-validates the selection. |
+| SelectOption(string) | void | Selects an option by value (case insensitive). |
+| SelectOptionByIndex(int) | void | Selects an option by index. |
+| GetOptionIndex(string) | int | The option index, or -1 if not found (case insensitive). |
+| ValidateSelectedOption() | void | Selects the first option if the selected one no longer exists. |
+
+## Properties
+
+| Name | Type | Summary |
+| --- | --- | --- |
+| options | List&lt;string&gt; | The options list (get only). |
+| value | string | The selected option. Setting it calls SelectOption. |
+| selectedOptionIndex | int | The index of the selected option, or -1. |
+
+Adding options does not change the label. Select an option after filling the list.
+
+## Code Usage
+```
+[SerializeField] private UISwitchSelect m_Difficulty;
+
+protected void Start()
+{
+    if (this.m_Difficulty == null)
+        return;
+
+    // Add options
+    this.m_Difficulty.AddOption("Easy");
+    this.m_Difficulty.AddOption("Normal");
+    this.m_Difficulty.AddOption("Hard");
+
+    // Remove the first option
+    this.m_Difficulty.RemoveOptionAtIndex(0);
+
+    // Select an option
+    this.m_Difficulty.SelectOption("Normal");
+
+    // Listen for changes
+    this.m_Difficulty.onChange.AddListener(OnDifficultyChanged);
+}
+
+private void OnDifficultyChanged(int index, string option)
+{
+    Debug.Log("Difficulty: " + option);
 }
 ```
