@@ -10,6 +10,11 @@ The visibility of the overlay is controlled by a CanvasGroup alpha value.
 
 To load a scene from a button you could use the [Load Scene component](load_scene.md) or via code.
 
+## Scene Names
+`LoadScene(string)` accepts a scene name (`"Game"`) or a scene path (`"Assets/Scenes/Game.unity"`). The scene must be added to **File -> Build Profiles** (Build Settings); otherwise an error is logged and the overlay is removed. `LoadScene(int)` loads by build index.
+
+The overlay survives the scene change (DontDestroyOnLoad), fades out once the new scene is active and then destroys itself.
+
 ## Code Usage
 ```
 public void LoadScene(string sceneName)

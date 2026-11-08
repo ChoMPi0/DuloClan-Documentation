@@ -10,6 +10,9 @@ The visibility of the modal box is controlled by a [Window](../windows/window.md
 
 To instantiate a modal box use the [Modal Box Create](modal_box_create.md) component or via code.
 
+## Inputs
+The **Confirm Input** (default "Submit") confirms and the **Cancel Input** (default "Cancel") closes the box. When several boxes are open, only the most recently shown one reacts, and a hidden or closing box ignores input. `onConfirm` and `onCancel` fire only once per box.
+
 ## Events
 The modal box has two events, **onConfirm** and **onCancel**.
 
