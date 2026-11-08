@@ -1,5 +1,19 @@
 # Troubleshooting
 
+## TextMeshPro
+
+**`TextMesh Pro Essential Resources are missing`** or texts are invisible
+Import them with **Window -> TextMeshPro -> Import TMP Essential Resources**. If the message stays after importing, it is from before the import; clear the console.
+
+**`Serialized reference type mismatch: field 'm_Text' expects 'TMP_Text' but the stored reference is a 'MonoBehaviour'`**
+A prefab or scene still has legacy Text components while the scripts expect TextMeshPro. Convert it with the **TextMeshPro Converter** before saving it, or the references are saved as empty ([Converting Your Own Prefabs](textmeshpro.md#converting-your-own-prefabs)).
+
+**A Shadow or Outline on a text has no effect**
+These components don't work on TextMeshPro texts. Use a material preset with Underlay or Outline instead ([Shadows and Outlines](textmeshpro.md#shadows-and-outlines)).
+
+**Characters show as squares**
+The font doesn't contain them. Use a font that has those characters, or add a fallback font in the font asset's **Fallback Font Assets** list.
+
 ## Input errors
 
 **`ArgumentException: Input Button I is not setup.`**

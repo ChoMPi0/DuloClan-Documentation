@@ -3,7 +3,7 @@ A dropdown select field. It extends the Unity Toggle: the field is "on" while it
 
 ## Setup
 1. Add **Select Field** (UI/Select Field) to a GameObject. An Image is required and is used as the target graphic.
-2. Assign a Text to **Label Text**. It shows the selected option.
+2. Assign a TextMeshPro text to **Label Text**. It shows the selected option.
 3. Enter the options in the **Options** text area, one per line.
 4. Pick the **Default option**.
 5. Style the list in the **List Layout**, **Option Layout** and **Option Background Layout** sections.
@@ -48,9 +48,9 @@ The list is created when it opens and destroyed when it closes. An invisible blo
 
 | Property | Summary |
 | --- | --- |
-| **Font**, **Font size**, **Font style**, **Color Normal** | Option text style. |
+| **Font**, **Font size**, **Font style**, **Color Normal** | Option text style. **Font** is a TMP font asset; empty uses the default font. |
 | **Padding** | Padding around the option text. |
-| **Effect Type** | None, Shadow or Outline, with **Color**, **Distance** and **Use graphic alpha**. |
+| **Effect Type** | None, Shadow or Outline, with **Color**, **Distance** and **Use graphic alpha**. Applied as a shared TMP material ([Text Utility](../miscellaneous/text_utility.md)). |
 | **Transition** | None or CrossFade text colors per state. |
 
 ### Option Background (Option Background Layout)

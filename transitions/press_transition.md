@@ -13,7 +13,7 @@ This component adds an extra transition target that reacts only to the pressed s
 | Color Tint | Graphic | Normal / pressed colors, color multiplier, duration |
 | Sprite Swap | Image | Pressed sprite |
 | Animation | GameObject with an Animator | Normal / pressed trigger names |
-| Text Color | Text | Normal / pressed colors, duration |
+| Text Color | TextMeshPro text | Normal / pressed colors, duration |
 
 Transitions run on unscaled time and work while the game is paused.
 

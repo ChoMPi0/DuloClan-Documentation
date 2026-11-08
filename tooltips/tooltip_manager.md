@@ -28,10 +28,10 @@ Without this asset, `UITooltip.InstantiateIfNecessary` does nothing and no toolt
 | Property | Summary |
 | --- | --- |
 | Name | Style name (custom styles only). |
-| Font / Font Style / Font Size / Line Spacing | Text settings. |
+| Font / Font Style / Font Size / Line Spacing | Text settings. **Font** is a TMP font asset; empty uses the default font. Line spacing is a multiplier (1 = normal). |
 | Override Text Alignment | **No** aligns the left column left and the right column right. **Left**, **Center** or **Right** forces an alignment. |
 | Font Color | Text color. |
-| Text Effects | Shadow or Outline effects with color, distance and **Use Graphic Alpha**. |
+| Text Effects | Shadow or Outline effects with color, distance and **Use Graphic Alpha**. One shadow and one outline are combined into a shared TMP material ([Text Utility](../miscellaneous/text_utility.md)). |
 
 The built-in slot tooltips use these custom style names: **ItemAttribute**, **ItemStat**, **ItemDescription**, **SpellTitle**, **SpellAttribute** and **SpellDescription**. Keep them if you use the slots.
 

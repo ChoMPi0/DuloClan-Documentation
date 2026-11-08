@@ -1,5 +1,5 @@
 # Display Value
-Writes the value of a progress bar or slider to a **Text**, for example "75%". Use **UI Progress Bar Display Value** for a [Progress Bar](../bars/progress_bar.md) and **UI Slider Display Value** for a **Slider**.
+Writes the value of a progress bar or slider to a TextMeshPro text, for example "75%". Use **UI Progress Bar Display Value** for a [Progress Bar](../bars/progress_bar.md) and **UI Slider Display Value** for a **Slider**.
 
 ## Setup
 1. Add **UI Progress Bar Display Value** or **UI Slider Display Value** to an object.
@@ -14,7 +14,7 @@ The text is updated when the component is enabled and every time the value chang
 | Name | Default | Summary |
 | --- | --- | --- |
 | Bar / Slider | none | The source of the value. |
-| Text | none | The Text that receives the value. |
+| Text | none | The TextMeshPro text that receives the value. |
 | Display | Percentage | **Percentage** multiplies the value by 100. **Raw** shows the value as it is. |
 | Format | `0` | A .NET numeric format string, for example `0`, `0.0` or `#,0`. |
 | Append | `%` | Text added after the number. Clear it when using **Raw**. |

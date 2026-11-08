@@ -1,8 +1,9 @@
 # Getting Started
 
 ## Requirements
-- Unity 2022.3 LTS or newer (tested on Unity 6).
-- The **Unity UI** package (`com.unity.ugui`), installed by default.
+- Unity 6 or newer.
+- The **Unity UI** package (`com.unity.ugui`), installed by default. It includes TextMeshPro.
+- The **TMP Essential Resources**: **Window -> TextMeshPro -> Import TMP Essential Resources** (once per project). See [TextMeshPro](textmeshpro.md).
 - The scripts use the legacy **Input Manager** (Project Settings -> Player -> Active Input Handling: *Input Manager (Old)* or *Both*).
 
 ## Manager Assets

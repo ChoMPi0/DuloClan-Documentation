@@ -31,7 +31,7 @@ When an item is assigned, the **Target** color is set to the item's quality colo
 
 ## Code Usage
 ```
-public void ShowItemName(UIItemInfo item, Text label)
+public void ShowItemName(UIItemInfo item, TMP_Text label)
 {
     label.text = "<color=#" + UIItemQualityColor.GetHexColor(item.Quality) + ">" + item.Name + "</color>";
 }

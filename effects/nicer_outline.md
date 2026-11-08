@@ -13,3 +13,6 @@ Add **Nicer Outline** to an object with a Graphic.
 Nicer Outline doubles the vertex count of Unity's Outline; use it where the quality difference is visible (large or thick-outlined text).
 
 It is not driven by the [Effect Transition](../transitions/effect_transition.md), which only supports Shadow and Outline.
+
+## TextMeshPro
+Nicer Outline does not affect TextMeshPro texts. Use the **Outline** settings of the TMP material instead ([Shadows and Outlines](../getting_started/textmeshpro.md#shadows-and-outlines)). The TextMeshPro Converter replaces Nicer Outline on texts with a material preset.

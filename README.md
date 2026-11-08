@@ -4,6 +4,8 @@ Documentation for the UGUI scripts shared by the DuloGames UI assets (namespace 
 
 New here? Start with **[Getting Started](getting_started/getting_started.md)**: requirements, the manager assets, input setup and canvas scaling.
 
+Updating from scripts 1.x? All texts are now TextMeshPro; read **[TextMeshPro](getting_started/textmeshpro.md)** before opening your scenes.
+
 ### About Demo Scripts
 The demo scripts in our assets are only meant for demonstration and will not be documented. You can still use them as a base for your own purposes.
 
@@ -13,6 +15,7 @@ Not every asset ships every system. If a page describes a component you can't fi
 ## Documentation Content
 * Getting Started
   - [Getting Started](getting_started/getting_started.md)
+  - [TextMeshPro](getting_started/textmeshpro.md)
   - [Troubleshooting](getting_started/troubleshooting.md)
   - [Script Changelog](changelog.md)
 * Audio
@@ -95,3 +98,4 @@ Not every asset ships every system. If a page describes a component you can't fi
   - [Canvas Helpers](miscellaneous/canvas_helpers.md)
   - [Small Helpers](miscellaneous/small_helpers.md)
   - [Utility](miscellaneous/utility.md)
+  - [Text Utility](miscellaneous/text_utility.md)

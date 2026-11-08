@@ -13,7 +13,7 @@ This component transitions a target between **Normal** and **Active** following 
 | Color Tint | Graphic | Normal / active colors (normal is transparent by default) |
 | Sprite Swap | Image | Active sprite |
 | Animation | GameObject with an Animator | Normal trigger and the **Active** bool parameter |
-| Text Color | Text | Normal / active colors |
+| Text Color | TextMeshPro text | Normal / active colors |
 | Canvas Group | CanvasGroup | Normal / active alpha (0 and 1 by default) |
 
 The visual follows the toggle whether it is changed by the user or from code.

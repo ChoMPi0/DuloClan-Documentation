@@ -11,12 +11,12 @@ Widens a target when a scrollbar is hidden, and shrinks it back when the scrollb
 It reacts only when the scrollbar's own GameObject is deactivated or activated, not when a parent is.
 
 ## Input Caret Offset
-Moves the caret of an **Input Field** by an offset. Useful when the font makes the default caret look misaligned.
+Moves the caret of a **TMP Input Field** by an offset. Useful when the font makes the default caret look misaligned.
 
-1. Add **UI Input Caret Offset** to an object with an **Input Field**.
+1. Add **UI Input Caret Offset** to an object with a **TMP Input Field**.
 2. Set the **Offset**.
 
-The Input Field creates its caret object at runtime. When the children of the input change, the component waits 0.5 seconds and moves the first child whose name contains "caret" by the **Offset**. `ApplyOffset()` is public and can also be called manually; each call adds the offset to the current position.
+The input field creates its caret object at runtime, under its text area. When the component is enabled or the children of the input change, it waits 0.5 seconds and moves the first object below the input whose name contains "caret" by the **Offset**. `ApplyOffset()` is public and can also be called manually; each call adds the offset to the current position.
 
 ## Globe Fill Inverter
 Sets an **Image** fill amount to `1 - value`. Use it to fill an image from the opposite side of a globe or bar.
@@ -25,7 +25,7 @@ Sets an **Image** fill amount to `1 - value`. Use it to fill an image from the o
 2. Add `UIGlobeFillInverter.OnChange` to a float event, for example a [Progress Bar](../bars/progress_bar.md) **On Change** or a Slider **On Value Changed**.
 
 ## Stats Add
-Adds 1 to the whole number shown in a **Text**. Used for "+" buttons on attribute points.
+Adds 1 to the whole number shown in a TextMeshPro text. Used for "+" buttons on attribute points.
 
 1. Add **UI Stats Add** and assign the **Value Text**.
 2. Add `UIStatsAdd.OnButtonPress` to a Button **On Click**.
@@ -33,8 +33,8 @@ Adds 1 to the whole number shown in a **Text**. Used for "+" buttons on attribut
 The text must contain a whole number, otherwise an exception is thrown.
 
 ## Text Set Value
-Writes a float to the **Text** on the same object.
+Writes a float to the TextMeshPro text on the same object.
 
-1. Add **UI Text Set Value** to an object with a **Text**.
+1. Add **UI Text Set Value** to an object with a **TextMeshPro - Text (UI)**.
 2. Set the **Float Format** (default `0.00`).
 3. Add `UITextSetValue.SetFloat` to a float event, for example a Slider **On Value Changed**.

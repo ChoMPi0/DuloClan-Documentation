@@ -1,6 +1,19 @@
 # Script Changelog
 Changes to the shared UI scripts. Your asset's version is in its `Readme.txt`; asset-specific changes are in its `Changelog.txt`.
 
+## 2.0 (November 2026)
+Requires Unity 6 or newer. **Breaking change:** all texts are now TextMeshPro. See [TextMeshPro](getting_started/textmeshpro.md) to update your own prefabs and scripts.
+
+**TextMeshPro**
+- All text fields are `TMP_Text`, input fields are `TMP_InputField` and font fields are `TMP_FontAsset`. Empty font fields use the default font from TMP Settings.
+- The asset's prefabs and scenes are converted; each font has a dynamic TMP font asset, and text shadows / outlines are TMP material presets.
+- New **TextMeshPro Converter** (Tools -> DuloGames -> TextMeshPro Converter) converts your own prefabs and scenes in place and keeps all references.
+- New [Text Utility](miscellaneous/text_utility.md) (`UITextUtility`): applies fonts, alignment, wrapping and Shadow / Outline effects to TMP texts at runtime.
+- Select field, slider extended and tooltip lines keep their **Shadow / Outline** settings; they now build a shared TMP material instead of adding Shadow / Outline components.
+- Highlight, press and toggle active transitions: **Text Color** targets a TMP text.
+- Input caret offset: works with the TMP input field caret.
+- Gradient, Letter Spacing and Nicer Outline only affect legacy Text and Images; use the built-in TMP features for texts.
+
 ## 1.3 (November 2026)
 Requires Unity 2022.3 LTS or newer.
 

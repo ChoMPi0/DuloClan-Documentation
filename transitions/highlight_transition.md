@@ -13,7 +13,7 @@ This component adds an extra transition target to common controls like **Button*
 | Color Tint | Graphic | Colors, color multiplier and duration |
 | Sprite Swap | Image | Sprites |
 | Animation | GameObject with an Animator | Trigger names |
-| Text Color | Text | Colors and duration |
+| Text Color | TextMeshPro text | Colors and duration |
 | Canvas Group | CanvasGroup | Alpha values and duration |
 
 ## States

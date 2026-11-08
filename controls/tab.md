@@ -18,7 +18,7 @@ If **Group** is empty, the tab looks for a ToggleGroup in its parents. If none i
 | **Image Target** | Image that transitions with the tab state. |
 | **Image Transition** | None, Color Tint, Sprite Swap or Animation. |
 | **Image Colors**, **Image Sprite State**, **Image Animation Triggers** | Values per state. They include Active states used while the tab is on. |
-| **Text Target** | Text that transitions with the tab state. |
+| **Text Target** | TextMeshPro text that transitions with the tab state. |
 | **Text Transition** | None or ColorTint. |
 | **Text Colors** | Text colors per state, including Active states. |
 | **Is On**, **Transition**, **Graphic**, **Group** | Standard Toggle properties. Child graphics of **Graphic** also fade in and out with the tab state. |
@@ -50,7 +50,7 @@ public void OnTabStateChanged(bool state)
 | imageColors | ColorBlockExtended | The image colors. |
 | imageSpriteState | SpriteStateExtended | The image sprites. |
 | imageAnimationTriggers | AnimationTriggersExtended | The image animation triggers. |
-| textTarget | Text | The text transition target. |
+| textTarget | TMP_Text | The text transition target. |
 | textTransition | UITab.TextTransition | The text transition type. |
 | textColors | ColorBlockExtended | The text colors. |
 

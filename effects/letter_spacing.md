@@ -16,4 +16,4 @@ Letter Spacing reports an adjusted preferred width to layout groups and Content 
 | spacing | float | The extra spacing per character. |
 
 ## TextMeshPro
-TextMeshPro has this built in (**Character Spacing** in the TMP text component); use that for TMP texts.
+Letter Spacing requires a legacy Text and can't be added to a TextMeshPro text. TextMeshPro has this built in: use **Character Spacing** in the TMP text component.

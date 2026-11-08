@@ -18,8 +18,8 @@ Leave **Options** empty to use it as a regular Slider.
 | **Options** | One option per line. |
 | **Options Padding** | Padding of the options grid. |
 | **Sprite** | The option image sprite. |
-| **Text Font**, **Text Font Style**, **Text Font Size**, **Text Color** | Option text style. |
-| **Text Effect** | None, Shadow or Outline, with **Color**, **Distance** and **Use graphic alpha**. |
+| **Text Font**, **Text Font Style**, **Text Font Size**, **Text Color** | Option text style. **Text Font** is a TMP font asset; empty uses the default font. |
+| **Text Effect** | None, Shadow or Outline, with **Color**, **Distance** and **Use graphic alpha**. Applied as a shared TMP material ([Text Utility](../miscellaneous/text_utility.md)). |
 | **Text Offset** | Position offset of the option text. |
 | **Text Transition** | None or ColorTint for the selected option. |
 | **Target** | Image or Text: what the color tint applies to. |

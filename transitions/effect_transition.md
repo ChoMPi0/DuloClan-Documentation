@@ -9,4 +9,6 @@ This component transitions the color of a **Shadow** or **Outline** effect with 
 
 Only Unity's **Shadow** and **Outline** effects (and effects derived from them) are supported; [Nicer Outline](../effects/nicer_outline.md) is not.
 
+Shadow and Outline don't work on TextMeshPro texts, so use this transition on Images. For a text glow, use a [Highlight Transition](highlight_transition.md) with **Text Color**, or swap TMP material presets from your own script.
+
 See also [Highlight Transition](highlight_transition.md).
